@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Table Export</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/table2excel.js"></script>
+	</head>
+	<body>
+	<button class="btn" id="export">Export</button>
+		<table class="table" data-tableName="Test Table 1">
+			<thead>
+				<tr class="noExl"><td>This shouldn't get exported</td></tr>
+				<tr><td>This Should get exported as a header</td><td>This should too</td></tr>
+			</thead>
+			<tbody>
+				<tr><td>data1a</td><td>data1b</td></tr>
+				<tr><td>data2a</td><td>data2b</td></tr>
+			</tbody>
+		</table>
+
+		<script>
+			$("#export").click(function() {
+				$(".table").table2excel({
+					exclude: ".noExl",
+					name: "Excel Document Name",
+					filename: "excel",
+					fileext: ".xls",
+					exclude_img: true,
+					exclude_links: true,
+					exclude_inputs: true
+				});
+			});
+		</script>
+	</body>
+</html>
